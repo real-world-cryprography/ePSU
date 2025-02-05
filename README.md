@@ -1,10 +1,10 @@
-# balanced_ePSU
+# ePSU
 
-### Environment
+## Environment
 
 This code and following instructions is tested on Ubuntu 22.04, with g++ 11.4.0 and CMake 3.22.1
 
-### Dependencies
+## Dependencies
 
 ```shell
 sudo apt-get update
@@ -12,7 +12,7 @@ sudo apt-get install build-essential tar curl zip unzip pkg-config libssl-dev li
 sudo apt install gcc g++ gdb git make cmake
 ```
 
-### Notes for Errors on Boost
+## Notes for Errors on Boost
 
 When building libOTe or volepsi using the command `python3 build.py ...`, the following error may occur:
 
@@ -34,6 +34,8 @@ For the version of volepsi we are using, adjust line 8 in the file `volepsi/out/
 set(URL "https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2")
 ```
 
+## balanced_ePSU
+
 ### Installation
 
 ```shell
@@ -49,7 +51,7 @@ make depend
 sudo make install
 ```
 
-### Compile ePSU
+### Compile balanced_ePSU
 
 **Hint: When you encounter a hash mismatch error with Boost, you can refer to the "Notes for Errors on Boost" section.**
 
@@ -68,7 +70,7 @@ cmake ..
 make
 ```
 
-### Test
+### Test for balanced_ePSU
 
 ```shell
 #in balanced_ePSU/build
@@ -91,51 +93,9 @@ make
 ./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
 ```
 
+## unbalanced_ePSU
 
-
-# unbalanced_ePSU
-
-### Environment
-
-This code and following instructions is tested on Ubuntu 22.04, with g++ 11.4.0 and CMake 3.22.1
-
-### Dependencies
-
-```shell
-sudo apt-get update
-sudo apt-get install build-essential tar curl zip unzip pkg-config libssl-dev libomp-dev libtool
-sudo apt install gcc g++ gdb git make cmake
-```
-
-### Notes for Errors on Boost
-
-When building libOTe or volepsi using the command `python3 build.py ...`, the following error may occur:
-
-```
-CMake Error at /home/cy/Desktop/tbb/eAPSU/pnECRG_OTP/volepsi/out/coproto/thirdparty/getBoost.cmake:67 (file):
-  file DOWNLOAD HASH mismatch
-
-    for file: [/home/cy/Desktop/tbb/eAPSU/pnECRG_OTP/volepsi/out/boost_1_86_0.tar.bz2]
-      expected hash: [1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b]
-        actual hash: [79e6d3f986444e5a80afbeccdaf2d1c1cf964baa8d766d20859d653a16c39848]
-             status: [0;"No error"]
-```
-
-This error is associated with issues in the URL used for downloading Boost.
-
-For the version of libOTe we are working with, it is necessary to modify line 8 in the file `libOTe/out/coproto/thirdparty/getBoost.cmake` to the following:
-
-```
-set(URL "https://archives.boost.io/release/1.84.0/source/boost_1_84_0.tar.bz2")
-```
-
-Similarly, for the version of volepsi we are using, adjust line 8 in the file `volepsi/out/coproto/thirdparty/getBoost.cmake` to:
-
-```
-set(URL "https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2")
-```
-
-### Installation
+### Installation 
 
 ```shell
 #first download the project
@@ -172,7 +132,7 @@ make depend
 sudo make install
 ```
 
-### Compile eAPSU
+### Compile unbalanced_ePSU
 
 **Hint: When you encounter a hash mismatch error with Boost, you can refer to the "Notes for Errors on Boost" section.**
 
@@ -197,9 +157,7 @@ cmake ..
 make
 ```
 
-### Test
-
-**Step 1:**
+### Test for unbalanced_ePSU
 
 ```shell
 #in unbalanced_ePSU
@@ -230,8 +188,6 @@ python3 test.py -h
 
 #### Examples: 
 
-
-
 ``` bash
 #Run MCRG + pECRG_nECRG_OTP with set size `2^12`:
 python3 test.py -pecrg_necrg_otp -cn 1 -nt 1 -nn 12
@@ -243,22 +199,22 @@ python3 test.py -pecrg -cn 1 -nt 1 -nn 12
 python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
 ```
 
-### Acknowledgments
+## Acknowledgments
 
 This project leverages several third-party libraries, some of which have been modified to better suit the needs of this project. Specifically:
 
-**[APSU]** (https://github.com/real-world-cryprography/APSU.git)
+**[APSU]**  (https://github.com/real-world-cryprography/APSU.git)
 
 - Modifications
   - Remove Kunlun and OSN related codes.
   - Write the immediate values into specified files.
 
-**[OPENSSL]** (https://github.com/openssl/openssl.git)
+**[OPENSSL]**  (https://github.com/openssl/openssl.git)
 
 - Modifications
   - Remove "static" of crypto/ec/curve25519.c line 211 to support curve25519.
 
-**[Kunlun]**  (https://github.com/yuchen1024/Kunlun.git)
+**[Kunlun]**   (https://github.com/yuchen1024/Kunlun.git)
 
 - Modifications
   - Tailor curve25519 to support pnMCRG.
