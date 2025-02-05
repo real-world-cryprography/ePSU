@@ -1,0 +1,230 @@
+{
+    "table_params": {
+        "hash_func_count": 3,
+        "table_size": 1638,
+        "max_items_per_bin": 1304
+    },
+    "item_params": {
+        "felts_per_item": 5
+    },
+    "query_params": {
+        "ps_low_degree": 44,
+        "query_powers": [ 1, 3, 11, 18, 45, 225 ]
+    },
+    "seal_params": {
+        "plain_modulus_bits": 22,
+        "poly_modulus_degree": 8192,
+        "coeff_modulus_bits": [ 56, 56, 56, 50 ]
+    }
+}
+INFO  11:57:56:912.098: /home/cy/Desktop/main_ePSU_0118/main/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  11:57:56:915.187: /home/cy/Desktop/main_ePSU_0118/main/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  11:57:56:915.241: Connecting to tcp://127.0.0.1:60000
+INFO  11:57:56:915.989: Successfully connected to tcp://127.0.0.1:60000
+INFO  11:57:56:916.016: Sending parameter request
+INFO  11:57:56:928.068: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  11:57:56:928.125: Received valid parameters
+INFO  11:57:56:928.134: Setting thread count to 1
+INFO  11:57:56:952.814: Sending APSU query
+INFO  11:57:56:953.156: Creating encrypted query for 1024 items
+INFO  11:57:56:953.539: /home/cy/Desktop/main_ePSU_0118/main/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  11:57:57:541.060: Finished creating encrypted query
+INFO  11:57:58:182.403: Launching 1 result worker tasks to handle 1 result parts
+INFO  11:57:58:182.552: Result worker [135100985509440]: starting
+INFO  11:57:59:113.197: Received APSU query response
+INFO  11:57:59:113.320: Communication R->S: 1808 KB
+INFO  11:57:59:113.328: Communication S->R: 87 KB
+INFO  11:57:59:113.333: Communication total: 1896 KB
+INFO  11:57:59:113.345: Timespan event information
+INFO  11:57:59:113.365: Sender::create_query                           :     1 instances. Duration:    587ms
+INFO  11:57:59:113.371: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  11:57:59:113.379: Sender::create_query::encrypt_data             :     1 instances. Duration:     14ms
+INFO  11:57:59:113.384: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  11:57:59:113.391: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  11:57:59:113.397: Sender::process_result_worker [135100985509440]:     1 instances. Duration:    929ms
+INFO  12:34:10:651.572: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  12:34:10:653.674: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  12:34:10:654.739: Connecting to tcp://127.0.0.1:60000
+INFO  12:34:10:656.617: Successfully connected to tcp://127.0.0.1:60000
+INFO  12:34:10:656.661: Sending parameter request
+INFO  12:34:10:669.102: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  12:34:10:669.154: Received valid parameters
+INFO  12:34:10:669.183: Setting thread count to 1
+ERROR 12:34:10:693.903: File `query.csv` does not exist
+WARN  12:34:10:694.698: Could not open or read file `query.csv`: file does not exist
+ERROR 12:34:10:694.728: Failed to read query file: terminating
+INFO  12:38:05:633.887: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  12:38:05:635.280: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  12:38:05:635.325: Connecting to tcp://127.0.0.1:60000
+INFO  12:38:05:636.302: Successfully connected to tcp://127.0.0.1:60000
+INFO  12:38:05:636.333: Sending parameter request
+INFO  12:38:05:650.117: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  12:38:05:650.202: Received valid parameters
+INFO  12:38:05:650.222: Setting thread count to 1
+INFO  12:38:05:674.450: Sending APSU query
+INFO  12:38:05:674.815: Creating encrypted query for 1024 items
+INFO  12:38:05:675.171: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  12:38:06:231.120: Finished creating encrypted query
+INFO  12:38:06:741.258: Launching 1 result worker tasks to handle 1 result parts
+INFO  12:38:06:741.413: Result worker [128794704741952]: starting
+INFO  12:38:07:644.292: Received APSU query response
+INFO  12:38:07:644.370: Communication R->S: 1808 KB
+INFO  12:38:07:644.423: Communication S->R: 87 KB
+INFO  12:38:07:644.429: Communication total: 1896 KB
+INFO  12:38:07:644.458: Timespan event information
+INFO  12:38:07:644.479: Sender::create_query                           :     1 instances. Duration:    556ms
+INFO  12:38:07:644.487: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  12:38:07:644.492: Sender::create_query::encrypt_data             :     1 instances. Duration:     13ms
+INFO  12:38:07:644.527: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  12:38:07:644.538: Sender::initialize                             :     1 instances. Duration:     23ms
+INFO  12:38:07:644.545: Sender::process_result_worker [128794704741952]:     1 instances. Duration:    902ms
+INFO  12:49:26:076.259: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  12:49:26:077.476: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  12:49:26:077.684: Connecting to tcp://127.0.0.1:60000
+INFO  12:49:26:078.581: Successfully connected to tcp://127.0.0.1:60000
+INFO  12:49:26:078.611: Sending parameter request
+INFO  12:49:26:090.763: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  12:49:26:090.829: Received valid parameters
+INFO  12:49:26:090.840: Setting thread count to 1
+INFO  12:49:26:115.933: Sending APSU query
+INFO  12:49:26:116.270: Creating encrypted query for 1024 items
+INFO  12:49:26:116.614: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  12:49:26:680.929: Finished creating encrypted query
+INFO  12:49:27:192.232: Launching 1 result worker tasks to handle 1 result parts
+INFO  12:49:27:192.437: Result worker [135288665933376]: starting
+INFO  12:49:28:086.814: Received APSU query response
+INFO  12:49:28:086.856: Communication R->S: 1808 KB
+INFO  12:49:28:086.869: Communication S->R: 87 KB
+INFO  12:49:28:086.893: Communication total: 1896 KB
+INFO  12:49:28:086.929: Timespan event information
+INFO  12:49:28:086.937: Sender::create_query                           :     1 instances. Duration:    564ms
+INFO  12:49:28:086.944: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  12:49:28:086.950: Sender::create_query::encrypt_data             :     1 instances. Duration:     13ms
+INFO  12:49:28:086.972: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  12:49:28:087.009: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  12:49:28:087.035: Sender::process_result_worker [135288665933376]:     1 instances. Duration:    893ms
+INFO  12:50:25:417.838: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  12:50:25:419.027: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  12:50:25:419.085: Connecting to tcp://127.0.0.1:60000
+INFO  12:50:25:420.168: Successfully connected to tcp://127.0.0.1:60000
+INFO  12:50:25:420.199: Sending parameter request
+INFO  12:50:25:432.739: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  12:50:25:432.793: Received valid parameters
+INFO  12:50:25:432.827: Setting thread count to 1
+INFO  12:50:25:458.437: Sending APSU query
+INFO  12:50:25:458.818: Creating encrypted query for 1024 items
+INFO  12:50:25:459.174: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  12:50:26:018.839: Finished creating encrypted query
+INFO  12:50:26:534.914: Launching 1 result worker tasks to handle 1 result parts
+INFO  12:50:26:535.112: Result worker [125986947466816]: starting
+INFO  12:50:27:455.776: Received APSU query response
+INFO  12:50:27:455.833: Communication R->S: 1808 KB
+INFO  12:50:27:455.849: Communication S->R: 87 KB
+INFO  12:50:27:455.856: Communication total: 1896 KB
+INFO  12:50:27:455.875: Timespan event information
+INFO  12:50:27:455.903: Sender::create_query                           :     1 instances. Duration:    560ms
+INFO  12:50:27:455.928: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  12:50:27:455.938: Sender::create_query::encrypt_data             :     1 instances. Duration:     13ms
+INFO  12:50:27:455.953: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  12:50:27:455.975: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  12:50:27:455.980: Sender::process_result_worker [125986947466816]:     1 instances. Duration:    920ms
+INFO  12:50:49:129.592: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  12:50:49:130.700: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  12:50:49:130.771: Connecting to tcp://127.0.0.1:60000
+INFO  12:50:49:131.514: Successfully connected to tcp://127.0.0.1:60000
+INFO  12:50:49:131.554: Sending parameter request
+INFO  12:50:49:143.473: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  12:50:49:143.517: Received valid parameters
+INFO  12:50:49:143.553: Setting thread count to 1
+INFO  12:50:49:168.670: Sending APSU query
+INFO  12:50:49:169.131: Creating encrypted query for 1024 items
+INFO  12:50:49:169.498: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  12:50:49:767.007: Finished creating encrypted query
+INFO  12:50:50:428.528: Launching 1 result worker tasks to handle 1 result parts
+INFO  12:50:50:428.889: Result worker [134356339263040]: starting
+INFO  12:50:51:327.342: Received APSU query response
+INFO  12:50:51:327.437: Communication R->S: 1808 KB
+INFO  12:50:51:327.448: Communication S->R: 87 KB
+INFO  12:50:51:327.483: Communication total: 1896 KB
+INFO  12:50:51:327.570: Timespan event information
+INFO  12:50:51:327.614: Sender::create_query                           :     1 instances. Duration:    597ms
+INFO  12:50:51:327.621: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  12:50:51:327.625: Sender::create_query::encrypt_data             :     1 instances. Duration:     12ms
+INFO  12:50:51:327.630: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  12:50:51:327.635: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  12:50:51:327.639: Sender::process_result_worker [134356339263040]:     1 instances. Duration:    897ms
+INFO  13:09:46:470.723: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  13:09:46:472.490: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  13:09:46:472.561: Connecting to tcp://127.0.0.1:60000
+INFO  13:09:46:473.505: Successfully connected to tcp://127.0.0.1:60000
+INFO  13:09:46:473.591: Sending parameter request
+INFO  13:09:46:485.200: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  13:09:46:485.249: Received valid parameters
+INFO  13:09:46:485.262: Setting thread count to 1
+INFO  13:09:46:510.068: Sending APSU query
+INFO  13:09:46:510.440: Creating encrypted query for 1024 items
+INFO  13:09:46:510.758: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  13:09:47:001.019: Finished creating encrypted query
+INFO  13:09:47:167.166: Launching 1 result worker tasks to handle 1 result parts
+INFO  13:09:47:167.318: Result worker [130694154028608]: starting
+INFO  13:09:47:974.406: Received APSU query response
+INFO  13:09:47:974.493: Communication R->S: 1808 KB
+INFO  13:09:47:974.536: Communication S->R: 87 KB
+INFO  13:09:47:974.565: Communication total: 1896 KB
+INFO  13:09:47:974.633: Timespan event information
+INFO  13:09:47:974.715: Sender::create_query                           :     1 instances. Duration:    490ms
+INFO  13:09:47:974.734: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  13:09:47:974.741: Sender::create_query::encrypt_data             :     1 instances. Duration:     14ms
+INFO  13:09:47:974.749: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  13:09:47:974.755: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  13:09:47:974.764: Sender::process_result_worker [130694154028608]:     1 instances. Duration:    806ms
+INFO  13:10:02:166.360: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  13:10:02:167.483: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  13:10:02:167.624: Connecting to tcp://127.0.0.1:60000
+INFO  13:10:02:168.345: Successfully connected to tcp://127.0.0.1:60000
+INFO  13:10:02:168.387: Sending parameter request
+INFO  13:10:02:180.139: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  13:10:02:180.168: Received valid parameters
+INFO  13:10:02:180.178: Setting thread count to 1
+INFO  13:10:02:205.354: Sending APSU query
+INFO  13:10:02:205.779: Creating encrypted query for 1024 items
+INFO  13:10:02:206.142: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  13:10:02:694.974: Finished creating encrypted query
+INFO  13:10:02:849.665: Launching 1 result worker tasks to handle 1 result parts
+INFO  13:10:02:849.906: Result worker [139652300277312]: starting
+INFO  13:10:03:661.325: Received APSU query response
+INFO  13:10:03:661.370: Communication R->S: 1808 KB
+INFO  13:10:03:661.410: Communication S->R: 87 KB
+INFO  13:10:03:661.416: Communication total: 1896 KB
+INFO  13:10:03:661.430: Timespan event information
+INFO  13:10:03:661.436: Sender::create_query                           :     1 instances. Duration:    489ms
+INFO  13:10:03:661.465: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  13:10:03:661.470: Sender::create_query::encrypt_data             :     1 instances. Duration:     14ms
+INFO  13:10:03:661.491: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  13:10:03:661.495: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  13:10:03:661.500: Sender::process_result_worker [139652300277312]:     1 instances. Duration:    810ms
+INFO  13:10:09:801.213: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp124
+INFO  13:10:09:802.362: /home/cy/Desktop/tbb/eAPSU/MCRG/cli/sender/sender.cpp126
+INFO  13:10:09:802.444: Connecting to tcp://127.0.0.1:60000
+INFO  13:10:09:803.341: Successfully connected to tcp://127.0.0.1:60000
+INFO  13:10:09:803.390: Sending parameter request
+INFO  13:10:09:815.570: PSUParams have false-positive probability 2^(-53.2564) per receiver item
+INFO  13:10:09:815.644: Received valid parameters
+INFO  13:10:09:815.659: Setting thread count to 1
+INFO  13:10:09:840.194: Sending APSU query
+INFO  13:10:09:840.621: Creating encrypted query for 1024 items
+INFO  13:10:09:840.932: /home/cy/Desktop/tbb/eAPSU/MCRG/sender/apsu/utils.cpp17
+INFO  13:10:10:332.788: Finished creating encrypted query
+INFO  13:10:10:486.842: Launching 1 result worker tasks to handle 1 result parts
+INFO  13:10:10:487.007: Result worker [139829658519104]: starting
+INFO  13:10:11:288.392: Received APSU query response
+INFO  13:10:11:288.466: Communication R->S: 1808 KB
+INFO  13:10:11:288.480: Communication S->R: 87 KB
+INFO  13:10:11:288.486: Communication total: 1896 KB
+INFO  13:10:11:288.502: Timespan event information
+INFO  13:10:11:288.511: Sender::create_query                           :     1 instances. Duration:    492ms
+INFO  13:10:11:288.520: Sender::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  13:10:11:288.528: Sender::create_query::encrypt_data             :     1 instances. Duration:     13ms
+INFO  13:10:11:288.535: Sender::create_query::prepare_data             :     1 instances. Duration:      1ms
+INFO  13:10:11:288.541: Sender::initialize                             :     1 instances. Duration:     24ms
+INFO  13:10:11:288.570: Sender::process_result_worker [139829658519104]:     1 instances. Duration:    800ms
