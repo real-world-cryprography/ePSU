@@ -91,21 +91,6 @@ make
 ./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
 ```
 
-### Acknowledgments
-
-This project leverages several third-party libraries, some of which have been modified to better suit the needs of this project. Specifically:
-
-**[OPENSSL]** (https://github.com/openssl/openssl.git)
-
-- Modifications
-  - Remove "static" of crypto/ec/curve25519.c line 211 to support curve25519.
-
-**[Kunlun]**  (https://github.com/yuchen1024/Kunlun.git)
-
-- Modifications
-  - Tailor curve25519 to support pnMCRG.
-
-
 
 
 # unbalanced_ePSU
