@@ -1,10 +1,90 @@
 # ePSU
 
-## Environment
+## Docker Quick Start
+
+Docker makes it easy to create, deploy, and run applications by using containers. Here are some quick tips to get you started with Docker:
+
+### Prerequisites
+
+- Ensure you have Docker installed on your machine. You can download Docker from the [official website](https://www.docker.com/products/docker-desktop).
+
+### Pulling the docker image
+
+To pull the Docker image, use the following command:
+
+```bash
+docker pull kafei2cy/epsu:latest
+```
+
+### Running a Docker Container
+
+To run a Docker container from the image you pulled and access the Container Shell, use the following command:
+
+```sh
+docker run -it --name your-container-name kafei2cy/epsu /bin/bash
+```
+
+- `--name your-container-name` gives your container a name for easier reference.
+
+### Test for ePSU
+
+```bash
+#Test for balanced_ePSU
+cd /home/ePSU/balanced_ePSU/build
+
+./test_balanced_epsu -h
+
+#for pECRG
+./test_pecrg -nn 12 -nt 1 -r 0 & ./test_pecrg -nn 12 -nt 1 -r 1
+
+#for pMCRG
+./test_pmcrg -nn 12 -nt 1 -r 0 & ./test_pmcrg -nn 12 -nt 1 -r 1 
+
+#for nECRG
+./test_necrg -nn 12 -nt 1 -r 0 & ./test_necrg -nn 12 -nt 1 -r 1 
+
+#for pnMCRG
+./test_pnmcrg -nn 12 -nt 1 -r 0 & ./test_pnmcrg -nn 12 -nt 1 -r 1 
+
+#for balanced ePSU test 
+./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
+
+#Test for unbalanced_ePSU
+cd /home/ePSU/unbalanced_ePSU
+
+python3 test.py -h
+
+#Run MCRG + pECRG_nECRG_OTP with set size `2^12`:
+python3 test.py -pecrg_necrg_otp -cn 1 -nt 1 -nn 12
+
+#Run MCRG + pECRG with set size `2^12`:
+python3 test.py -pecrg -cn 1 -nt 1 -nn 12
+
+#Run MCRG + pnECRG with set size `2^12`:
+python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
+```
+
+### Stopping and Removing a Docker Container
+
+To stop a running container, use the following command:
+
+```sh
+docker stop your-container-name
+```
+
+To remove a stopped container, use the following command:
+
+```sh
+docker rm your-container-name
+```
+
+## Compiling the ePSU Locally
+
+### Environment
 
 This code and following instructions is tested on Ubuntu 22.04, with g++ 11.4.0 and CMake 3.22.1
 
-## Dependencies
+### Dependencies
 
 ```shell
 sudo apt-get update
@@ -12,7 +92,7 @@ sudo apt-get install build-essential tar curl zip unzip pkg-config libssl-dev li
 sudo apt install gcc g++ gdb git make cmake
 ```
 
-## Notes for Errors on Boost
+### Notes for Errors on Boost
 
 When building libOTe or volepsi using the command `python3 build.py ...`, the following error may occur:
 
@@ -34,9 +114,9 @@ For the version of volepsi we are using, adjust line 8 in the file `volepsi/out/
 set(URL "https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2")
 ```
 
-## balanced_ePSU
+### balanced_ePSU
 
-### Installation
+#### Installation
 
 ```shell
 #first download the project
@@ -51,7 +131,7 @@ make depend
 sudo make install
 ```
 
-### Compile balanced_ePSU
+#### Compile balanced_ePSU
 
 **Hint: When you encounter a hash mismatch error with Boost, you can refer to the "Notes for Errors on Boost" section.**
 
@@ -70,7 +150,7 @@ cmake ..
 make
 ```
 
-### Test for balanced_ePSU
+#### Test for balanced_ePSU
 
 ```shell
 #in balanced_ePSU/build
@@ -93,9 +173,9 @@ make
 ./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
 ```
 
-## unbalanced_ePSU
+### unbalanced_ePSU
 
-### Installation 
+#### Installation 
 
 ```shell
 #first download the project
@@ -132,7 +212,7 @@ make depend
 sudo make install
 ```
 
-### Compile unbalanced_ePSU
+#### Compile unbalanced_ePSU
 
 **Hint: When you encounter a hash mismatch error with Boost, you can refer to the "Notes for Errors on Boost" section.**
 
@@ -157,7 +237,7 @@ cmake ..
 make
 ```
 
-### Test for unbalanced_ePSU
+#### Test for unbalanced_ePSU
 
 ```shell
 #in unbalanced_ePSU
@@ -165,7 +245,7 @@ make
 python3 test.py -h
 ```
 
-#### Flags:
+##### Flags:
 
     usage: test.py [-h] [-pecrg] [-pnecrg] [-pnecrgotp] -cn CN [-nt NT] [-nn NN]
     
@@ -186,7 +266,7 @@ python3 test.py -h
       -nt NT      Number of threads, default 1
       -nn NN      Logarithm of set size, default 12
 
-#### Examples: 
+##### Examples: 
 
 ``` bash
 #Run MCRG + pECRG_nECRG_OTP with set size `2^12`:
@@ -199,7 +279,7 @@ python3 test.py -pecrg -cn 1 -nt 1 -nn 12
 python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
 ```
 
-## Acknowledgments
+### Acknowledgments
 
 This project leverages several third-party libraries, some of which have been modified to better suit the needs of this project. Specifically:
 
@@ -218,38 +298,5 @@ This project leverages several third-party libraries, some of which have been mo
 
 - Modifications
   - Tailor curve25519 to support pnMCRG.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
