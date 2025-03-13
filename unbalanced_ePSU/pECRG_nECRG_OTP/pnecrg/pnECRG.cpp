@@ -108,7 +108,7 @@ void pECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 co
         // H(x[pi[i]])^a
         #pragma omp parallel for num_threads(numThreads)
         for(u32 i = 0; i < len; ++i){
-            u32 permuted_i = pi[i/colNum] * colNum + (i % colNum);
+            u32 permuted_i = pi[i % rowNum] + (i/rowNum)* rowNum;
             Hash::BlockToBytes(matrix[permuted_i], vec_Hash_X[i].px, 32); 
             x25519_scalar_mulx(vec_permuted_Fk1_X[i].px, keyA.data(), vec_Hash_X[i].px); 
         }
@@ -123,7 +123,7 @@ void pECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 co
         // std::vector<block> pECRG_out(len);
         #pragma omp parallel for num_threads(numThreads)
         for(u32 i = 0; i < len; ++i){
-            u32 permuted_i = pi[i/colNum] * colNum + (i % colNum);
+            u32 permuted_i = pi[i % rowNum] + (i/rowNum)* rowNum;
             x25519_scalar_mulx(vec_permuted_Fk1k2_Y[i].px, keyA.data(), vec_Fk1_Y[permuted_i].px);
 
             std::vector<u8> outbBytes(32);
@@ -167,6 +167,7 @@ void pECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 co
     }
 }
 
+// matrix[i] and matrix[i+rowNum] are in the same row
 void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 colNum, std::vector<u32> &pi, std::vector<block> &out, u32 numThreads){
 
     u32 len = matrix.size();
@@ -188,13 +189,15 @@ void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 c
         std::vector<u8> keyA(32);
         prng.get(keyA.data(), keyA.size());
 
+
         // H(x[pi[i]])^a
         #pragma omp parallel for num_threads(numThreads)
         for(u32 i = 0; i < len; ++i){
-            u32 permuted_i = pi[i/colNum] * colNum + (i % colNum);
+            u32 permuted_i = pi[i % rowNum] + (i/rowNum)* rowNum;
             Hash::BlockToBytes(matrix[permuted_i], vec_Hash_X[i].px, 32); 
             x25519_scalar_mulx(vec_permuted_Fk1_X[i].px, keyA.data(), vec_Hash_X[i].px); 
         }
+        
         // send H(x[pi[i]])^a
         SendEC25519Points(chl, vec_permuted_Fk1_X, numThreads);
 
@@ -203,16 +206,18 @@ void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 c
         // recv H(y[i])^b
         ReceiveEC25519Points(chl, vec_Fk1_Y, numThreads);
 
+
         std::vector<block> pECRG_out(len);
         #pragma omp parallel for num_threads(numThreads)
         for(u32 i = 0; i < len; ++i){
-            u32 permuted_i = pi[i/colNum] * colNum + (i % colNum);
+            u32 permuted_i = pi[i % rowNum] + (i/rowNum)* rowNum ;
             x25519_scalar_mulx(vec_permuted_Fk1k2_Y[i].px, keyA.data(), vec_Fk1_Y[permuted_i].px);
 
             std::vector<u8> outbBytes(32);
             memcpy(outbBytes.data(), vec_permuted_Fk1k2_Y[i].px, 32);
             pECRG_out[i] = Hash::BytesToBlock(outbBytes);            
         }   
+
 
         // nECRG: ssPEQT + ROT
         oc::Matrix<u8> mLabel(len, keyByteLength);
@@ -230,9 +235,10 @@ void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 c
         cmp.getOutput(0, mOut);
         // bitV[i] = mOut[i*colNum] ^ mOut[i*colNum + 1] ... ^ mOut[(i+1) * colNum - 1]  
         BitVector bitV(rowNum);
+
         for(auto i = 0; i < rowNum; ++i){
             for(auto j = 0; j < colNum; ++j){
-                bitV[i] ^= (mOut(i * colNum + j, 0) & 1); 
+                bitV[i] ^= (mOut(j * rowNum + i, 0) & 1); 
             }
         }
 
@@ -254,7 +260,7 @@ void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 c
         prng.get(keyB.data(), keyB.size());
         
         // H(y[i])^b
-        #pragma omp parallel for num_threads(numThreads)
+        // #pragma omp parallel for num_threads(numThreads)
         for(u32 i = 0; i < len; ++i){
             Hash::BlockToBytes(matrix[i], vec_Hash_Y[i].px, 32); 
             x25519_scalar_mulx(vec_Fk1_Y[i].px, keyB.data(), vec_Hash_Y[i].px); 
@@ -294,9 +300,10 @@ void pnECRG(u32 isPI, Socket &chl, std::vector<block> &matrix, u32 rowNum, u32 c
         cmp.getOutput(0, mOut);
         // bitV[i] = mOut[i*colNum] ^ mOut[i*colNum + 1] ... ^ mOut[(i+1) * colNum - 1]  
         BitVector bitV(rowNum);
+        
         for(auto i = 0; i < rowNum; ++i){
             for(auto j = 0; j < colNum; ++j){
-                bitV[i] ^= (mOut(i * colNum + j, 0) & 1); 
+                bitV[i] ^= (mOut(j * rowNum + i, 0) & 1); 
             }
         }
 

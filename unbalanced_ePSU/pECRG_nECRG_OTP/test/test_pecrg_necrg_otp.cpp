@@ -6,7 +6,7 @@ using namespace oc;
 
 void pECRG_nECRG_OTP_Test(u32 isSender, u32 numThreads)
 {
-    pECRG_nECRG_OTP(isSender, numThreads);   
+    pECRG_nECRG_OTP(isSender, numThreads);  
     if(!isSender){
         std::cout << "pECRG_nECRG_OTP_Test finished." << std::endl;
     }

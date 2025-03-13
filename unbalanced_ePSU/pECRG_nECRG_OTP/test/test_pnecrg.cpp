@@ -37,7 +37,7 @@ void pnECRG_test(u32 idx, u32 colNum, u32 numThreads){
     // prng.get(matrix.data(), matrix.size());
 
     // generate inputSet
-    u32 equalNum = rowNum/2;
+    u32 equalNum = 10;
     for(u32 i = 0; i < equalNum; ++i){
         for(u32 j = 0; j < colNum; ++j){
             matrix[i] = block(0, i*colNum +j +1);//equal
@@ -73,7 +73,7 @@ void pnECRG_test(u32 idx, u32 colNum, u32 numThreads){
 
         u32 count = 0;
         for(u32 i = 0; i < rowNum; ++i){
-            if(pnecrg_out0[i] == pnecrg_out[i]){
+            if(pnecrg_out0[i] != pnecrg_out[i]){
                 count += 1;
             }
         }
