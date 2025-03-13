@@ -337,7 +337,7 @@ chmod +x balancedAutoTest.sh
 
 - **Purpose**: Set the number of threads
 - **Type**: Positive integer
-- **Default**: 4
+- **Default**: `4`
 
 ##### 3. `-start [EXPONENT]`
 
@@ -391,7 +391,7 @@ chmod +x unbalancedAutoTest.sh
 
 - **Purpose**: Set the number of threads
 - **Type**: Positive integer
-- **Default**: 4
+- **Default**: `4`
 
 ##### 3. `-start [EXPONENT]`
 
