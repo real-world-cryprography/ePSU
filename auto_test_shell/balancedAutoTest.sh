@@ -106,7 +106,7 @@ for nn in $(generate_nn_sequence); do
     pids=()
     for ((r=0; r<PARTICIPANTS; r++)); do
         echo "   Launching participant -r $r"
-        "$EXECUTABLE" -nn "$nn" -nt "$NT_VALUE" -r "$r" &
+        ./"$EXECUTABLE" -nn "$nn" -nt "$NT_VALUE" -r "$r" &
         pids+=($!)
     done
     
