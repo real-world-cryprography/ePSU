@@ -220,7 +220,7 @@ Docker makes it easy to create, deploy, and run applications by using containers
 To pull the Docker image, use the following command:
 
 ```bash
-docker pull kafei2cy/epsu:latest
+docker pull kafei2cy/epsu:v1.2.0
 ```
 
 ### Running a Docker Container
