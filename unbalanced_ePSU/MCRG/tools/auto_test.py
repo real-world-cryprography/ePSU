@@ -214,7 +214,7 @@ if __name__ =="__main__":
     #network1M()
     #network100M()
     # check_ans(db,query,union)
-    prepare_data(pow(2, args.nn),pow(2,10),256,16)
+    prepare_data(pow(2, args.nn),pow(2,10),512,16)
     
     # Test1()
 
