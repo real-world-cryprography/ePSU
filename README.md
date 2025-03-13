@@ -1,83 +1,5 @@
 # ePSU
 
-## Docker Quick Start
-
-Docker makes it easy to create, deploy, and run applications by using containers. Here are some quick tips to get you started with Docker:
-
-### Prerequisites
-
-- Ensure you have Docker installed on your machine. You can download Docker from the [official website](https://www.docker.com/products/docker-desktop).
-
-### Pulling the docker image
-
-To pull the Docker image, use the following command:
-
-```bash
-docker pull kafei2cy/epsu:latest
-```
-
-### Running a Docker Container
-
-To run a Docker container from the image you pulled and access the Container Shell, use the following command:
-
-```sh
-docker run -it --name your-container-name kafei2cy/epsu /bin/bash
-```
-
-- `--name your-container-name` gives your container a name for easier reference.
-
-### Test for ePSU
-
-```bash
-#Test for balanced_ePSU
-cd /home/ePSU/balanced_ePSU/build
-
-./test_balanced_epsu -h
-
-#for pECRG
-./test_pecrg -nn 12 -nt 1 -r 0 & ./test_pecrg -nn 12 -nt 1 -r 1
-
-#for pMCRG
-./test_pmcrg -nn 12 -nt 1 -r 0 & ./test_pmcrg -nn 12 -nt 1 -r 1 
-
-#for nECRG
-./test_necrg -nn 12 -nt 1 -r 0 & ./test_necrg -nn 12 -nt 1 -r 1 
-
-#for pnMCRG
-./test_pnmcrg -nn 12 -nt 1 -r 0 & ./test_pnmcrg -nn 12 -nt 1 -r 1 
-
-#for balanced ePSU test 
-./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
-
-#Test for unbalanced_ePSU
-cd /home/ePSU/unbalanced_ePSU
-
-python3 test.py -h
-
-#Run MCRG + pECRG_nECRG_OTP with set size `2^12`:
-python3 test.py -pecrg_necrg_otp -cn 1 -nt 1 -nn 12
-
-#Run MCRG + pECRG with set size `2^12`:
-python3 test.py -pecrg -cn 1 -nt 1 -nn 12
-
-#Run MCRG + pnECRG with set size `2^12`:
-python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
-```
-
-### Stopping and Removing a Docker Container
-
-To stop a running container, use the following command:
-
-```sh
-docker stop your-container-name
-```
-
-To remove a stopped container, use the following command:
-
-```sh
-docker rm your-container-name
-```
-
 ## Compiling the ePSU Locally
 
 ### Environment
@@ -112,6 +34,12 @@ For the version of volepsi we are using, adjust line 8 in the file `volepsi/out/
 
 ```
 set(URL "https://archives.boost.io/release/1.86.0/source/boost_1_86_0.tar.bz2")
+```
+
+and for the version of libOTe we are using, adjust line 8 in the file `libOTe/out/coproto/thirdparty/getBoost.cmake` to:
+
+```
+set(URL "https://archives.boost.io/release/1.84.0/source/boost_1_84_0.tar.bz2")
 ```
 
 ### balanced_ePSU
@@ -279,7 +207,211 @@ python3 test.py -pecrg -cn 1 -nt 1 -nn 12
 python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
 ```
 
-### Acknowledgments
+## Docker Quick Start
+
+Docker makes it easy to create, deploy, and run applications by using containers. Here are some quick tips to get you started with Docker:
+
+### Prerequisites
+
+- Ensure you have Docker installed on your machine. You can download Docker from the [official website](https://www.docker.com/products/docker-desktop).
+
+### Pulling the docker image
+
+To pull the Docker image, use the following command:
+
+```bash
+docker pull kafei2cy/epsu:latest
+```
+
+### Running a Docker Container
+
+To run a Docker container from the image you pulled and access the Container Shell, use the following command:
+
+```sh
+docker run -it --name your-container-name kafei2cy/epsu /bin/bash
+```
+
+- `--name your-container-name` gives your container a name for easier reference.
+
+### Test for ePSU
+
+```bash
+#Test for balanced_ePSU
+cd /home/ePSU/balanced_ePSU/build
+
+./test_balanced_epsu -h
+
+#for pECRG
+./test_pecrg -nn 12 -nt 1 -r 0 & ./test_pecrg -nn 12 -nt 1 -r 1
+
+#for pMCRG
+./test_pmcrg -nn 12 -nt 1 -r 0 & ./test_pmcrg -nn 12 -nt 1 -r 1 
+
+#for nECRG
+./test_necrg -nn 12 -nt 1 -r 0 & ./test_necrg -nn 12 -nt 1 -r 1 
+
+#for pnMCRG
+./test_pnmcrg -nn 12 -nt 1 -r 0 & ./test_pnmcrg -nn 12 -nt 1 -r 1 
+
+#for balanced ePSU test 
+./test_balanced_epsu -nn 12 -nt 1 -r 0 & ./test_balanced_epsu -nn 12 -nt 1 -r 1
+
+#Test for unbalanced_ePSU
+cd /home/ePSU/unbalanced_ePSU
+
+python3 test.py -h
+
+#Run MCRG + pECRG_nECRG_OTP with set size `2^12`:
+python3 test.py -pecrg_necrg_otp -cn 1 -nt 1 -nn 12
+
+#Run MCRG + pECRG with set size `2^12`:
+python3 test.py -pecrg -cn 1 -nt 1 -nn 12
+
+#Run MCRG + pnECRG with set size `2^12`:
+python3 test.py -pnecrg -cn 1 -nt 1 -nn 12
+```
+
+### Stopping and Removing a Docker Container
+
+To stop a running container, use the following command:
+
+```sh
+docker stop your-container-name
+```
+
+To remove a stopped container, use the following command:
+
+```sh
+docker rm your-container-name
+```
+
+## Automated Testing
+
+We also provide automated scripts to test both balanced_ePSU and unbalanced_ePSU, allowing for quick and efficient evaluation across different configurations. (If you use the docker image we provide, you just need to choose the network setting and run the script directly in the corresponding folder)
+
+### Change The Network Setting
+
+```bash
+#If you are using the docker image we provide, you can use the following command without 'sudo'
+#for example:
+sudo tc qdisc add dev lo root netem delay 80ms rate 400Mbit
+
+#delete the setting
+sudo tc qdisc del dev lo root
+```
+
+### balanced_ePSU Auto Test
+
+```bash
+#in ePSU/auto_test_shell
+#copy the script to ePSU/balanced_ePSU/build
+cp balancedAutoTest.sh ../balanced_ePSU/build
+
+#in ePSU/balanced_ePSU/build
+chmod +x balancedAutoTest.sh
+
+#if you use the docker image 
+#run the script, for example:
+./balancedAutoTest.sh -protocol psu -start 10 -end 12 -step 2 -nt 4
+```
+
+#### Script Parameters Overview
+
+##### 1. `-protocol [NAME]`
+
+- **Purpose**: Select the protocol to test
+
+- **Valid Options**:
+
+  ```bash
+  pecrg        # pECRG protocol
+  pmcrg        # pMCRG protocol
+  necrg        # nECRG protocol
+  pnmcrg       # pnMCRG protocol
+  psu          # balanced_ePSU protocol
+  ```
+
+- **Default**: `psu`
+
+##### 2. `-nt [VALUE]`
+
+- **Purpose**: Set the number of threads
+- **Type**: Positive integer
+- **Default**: 4
+
+##### 3. `-start [EXPONENT]`
+
+- **Purpose**: Define the starting exponent for dataset size (2^N)
+- **Type**: $\text{Integer} \ge 10$
+- **Default**: `10` ($2^{10}$ = 1024 elements)
+
+##### 4. `-end [EXPONENT]`
+
+- **Purpose**: Define the ending exponent for dataset size (2^N)
+- **Type**: $\text{start} \le \text{Integer} \le 20$
+- **Default**: `20` ($2^{20}$= 1,048,576 elements)
+
+##### **5. `-step [VALUE]`**
+
+- **Purpose**: Set increment step between exponents
+- **Type**: Positive integer
+- **Default**: `2`
+
+### unbalanced_ePSU Auto Test
+
+```shell
+#in ePSU/auto_test_shell
+#copy the script to ePSU/unbalanced_ePSU
+cp unbalancedAutoTest.sh ../unbalanced_ePSU/
+
+#in ePSU/unbalanced_ePSU
+chmod +x unbalancedAutoTest.sh
+
+#run the script, for example:
+./unbalancedAutoTest.sh -protocol pecrg_necrg_otp -start 10 -end 12 -step 2 -nt 4
+```
+
+#### Script Parameters Overview
+
+##### 1. `-protocol [NAME]`
+
+- **Purpose**: Select the protocol to test
+
+- **Valid Options**:
+
+  ```bash
+  pecrg_necrg_otp       # unbalanced_ePSU protocol
+  pecrg                 # pECRG protocol
+  pnecrg                # pnECRG protocol
+  ```
+
+- **Default**: `pecrg_necrg_otp`
+
+##### 2. `-nt [VALUE]`
+
+- **Purpose**: Set the number of threads
+- **Type**: Positive integer
+- **Default**: 4
+
+##### 3. `-start [EXPONENT]`
+
+- **Purpose**: Define the starting exponent for dataset size (2^N)
+- **Type**: $\text{Integer} \ge 10$
+- **Default**: `10` ($2^{10}$ = 1024 elements)
+
+##### 4. `-end [EXPONENT]`
+
+- **Purpose**: Define the ending exponent for dataset size (2^N)
+- **Type**: $\text{start} \le \text{Integer} \le 20$
+- **Default**: `20` ($2^{20}$= 1,048,576 elements)
+
+##### **5. `-step [VALUE]`**
+
+- **Purpose**: Set increment step between exponents
+- **Type**: Positive integer
+- **Default**: `2`
+
+## Acknowledgments
 
 This project leverages several third-party libraries, some of which have been modified to better suit the needs of this project. Specifically:
 
@@ -298,5 +430,4 @@ This project leverages several third-party libraries, some of which have been mo
 
 - Modifications
   - Tailor curve25519 to support pnMCRG.
-
 
