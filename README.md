@@ -229,6 +229,9 @@ To run a Docker container from the image you pulled and access the Container She
 
 ```sh
 docker run -it --name your-container-name kafei2cy/epsu /bin/bash
+
+#if you want use tc to change network setting, use the following command
+docker run -it --cap-add=NET_ADMIN --name your-container-name kafei2cy/epsu /bin/bash
 ```
 
 - `--name your-container-name` gives your container a name for easier reference.
@@ -287,13 +290,15 @@ docker rm your-container-name
 
 ## Automated Testing
 
-We also provide automated scripts to test both balanced_ePSU and unbalanced_ePSU, allowing for quick and efficient evaluation across different configurations. (If you use the docker image we provide, you just need to choose the network setting and run the script directly in the corresponding folder)
+We also provide automated scripts to test both balanced_ePSU and unbalanced_ePSU, allowing for quick and efficient evaluation across different configurations. If you use the docker image we provide, you just need to choose the network setting and run the script directly in the corresponding folder.
+
+If your host machine is running Windows, note that Docker Desktop on Windows uses WSL2 (Windows Subsystem for Linux) by default (can not use tc). A more effective approach is to leverage application-level tools like **Clumsy** or other proxy-based solutions for network emulation.
 
 ### Change The Network Setting
 
 ```bash
 #If you are using the docker image we provide, you can use the following command without 'sudo'
-#for example:
+#change the network setting，for example:
 sudo tc qdisc add dev lo root netem delay 80ms rate 400Mbit
 
 #delete the setting
