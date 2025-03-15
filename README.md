@@ -228,10 +228,10 @@ docker pull kafei2cy/epsu:v1.2.0
 To run a Docker container from the image you pulled and access the Container Shell, use the following command:
 
 ```sh
-docker run -it --name your-container-name kafei2cy/epsu /bin/bash
+docker run -it --name your-container-name kafei2cy/epsu:v1.2.0 /bin/bash
 
 #if you want use tc to change network setting, use the following command
-docker run -it --cap-add=NET_ADMIN --name your-container-name kafei2cy/epsu /bin/bash
+docker run -it --cap-add=NET_ADMIN --name your-container-name kafei2cy/epsu:v1.2.0 /bin/bash
 ```
 
 - `--name your-container-name` gives your container a name for easier reference.
